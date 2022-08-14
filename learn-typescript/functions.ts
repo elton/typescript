@@ -3,7 +3,7 @@ const addNumbers = (a: number, b: number): number => a + b;
 
 export default addNumbers;
 
-export const addStrings = (str1: string, str2: string = ''): string =>
+export const addStrings = (str1: string, str2 = ''): string =>
   `${str1} ${str2}`;
 
 export const fetchData = (url: string): Promise<string> =>

@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable comma-dangle */
-/* eslint-disable no-unused-vars */
 export function printToFile(text: string, callback: () => void): void {
   console.log(text);
   callback();
@@ -16,6 +13,13 @@ export function arrayMutate(
 }
 
 console.log(arrayMutate([1, 2, 3], (v) => v + 1));
+
+// Generics
+const arrayMutate2 = <T>(numbers: T[], mutate: (v: T) => T): T[] => {
+  return numbers.map(mutate);
+};
+console.log(arrayMutate2([1, 2, 3], (v) => v * 2));
+console.log(arrayMutate2(['Elton', 'Tom'], (v) => `Hello ${v}`));
 
 // return a function that takes a number and returns a number
 type Adder = (v: number) => number;
