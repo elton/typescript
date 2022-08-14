@@ -1,12 +1,15 @@
 import { Typography } from 'antd';
 
 const { Title, Paragraph } = Typography;
-const Props = (user: User) => {
+const Props: React.FunctionComponent<{ name: string; age: number }> = ({
+  name,
+  age,
+}: User) => {
   return (
     <>
       <Title>Component Props</Title>
       <Paragraph>
-        Hello {user.name}! {user.age && <>You are {user.age} years old.</>}
+        Hello {name}! {age && <>You are {age} years old.</>}
       </Paragraph>
     </>
   );

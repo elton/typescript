@@ -1,8 +1,12 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, message } from 'antd';
+import { useCallback } from 'react';
 import { HiAdjustments, HiCube, HiHome } from 'react-icons/hi';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import Box from './components/Component/Box';
+import List from './components/Component/List';
 import Props from './components/Component/Props';
 import StatesMgt from './components/Component/StatesMgt';
+import Todo from './components/Component/Todo';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Navigation from './components/Router/Navigation';
@@ -20,6 +24,10 @@ interface MenuItem {
 }
 
 function App() {
+  const onListClick = useCallback((item: string) => {
+    message.info(`You clicked ${item}`);
+  }, []);
+
   const year = new Date().getFullYear();
   const selectedKey = useLocation().pathname;
 
@@ -42,6 +50,21 @@ function App() {
         },
         {
           key: '1-2',
+          label: <Link to='/components/box'>Children container</Link>,
+          link: '/components/box',
+        },
+        {
+          key: '1-3',
+          label: <Link to='/components/todo'>Hooks Example:Todo</Link>,
+          link: '/components/todo',
+        },
+        {
+          key: '1-4',
+          label: <Link to='/components/list'>Complex Properties</Link>,
+          link: '/components/list',
+        },
+        {
+          key: '1-5',
           label: <Link to='/components/states-mgt'>Component State</Link>,
           link: '/components/states-mgt',
         },
@@ -90,6 +113,14 @@ function App() {
               path='/components/props'
               element={<Props name='Elton' age={45} />}
             />
+            <Route path='/components/box' element={<Box>Hello there</Box>} />
+            <Route
+              path='/components/list'
+              element={
+                <List items={['one', 'two', 'three']} onClick={onListClick} />
+              }
+            />
+            <Route path='/components/todo' element={<Todo />} />
             <Route path='/components/states-mgt' element={<StatesMgt />} />
             <Route path='/router/params/:id' element={<Params />} />
             <Route path='/router/navigation' element={<Navigation />} />

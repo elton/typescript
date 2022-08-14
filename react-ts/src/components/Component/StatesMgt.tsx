@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const { Title, Paragraph, Text } = Typography;
 
-const StatesMgt = () => {
+const StatesMgt: React.FunctionComponent = () => {
   const [state, setState] = useState<State>({ count: 0 });
 
   useEffect(() => {
