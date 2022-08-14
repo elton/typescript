@@ -1,7 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 enum LoadingState {
   LOADING = 'LOADING',
   LOADED = 'LOADED',

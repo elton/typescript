@@ -1,7 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable comma-dangle */
 interface MyUser {
   name: string;
   id: number;

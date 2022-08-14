@@ -1,9 +1,4 @@
-/* eslint-disable no-console */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-empty-function */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-useless-constructor */
-/* eslint-disable no-unused-vars */
+
 abstract class StreetFighter {
   constructor() {}
 

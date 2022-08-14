@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable comma-dangle */
 interface Cat {
   name: string;
   breed: string;

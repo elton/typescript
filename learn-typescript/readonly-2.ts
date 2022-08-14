@@ -1,9 +1,3 @@
-/* eslint-disable no-empty-function */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-useless-constructor */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-console */
-/* eslint-disable max-classes-per-file */
 class Doggy {
   constructor(public readonly name: string, public readonly age: number) {}
 }

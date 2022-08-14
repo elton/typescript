@@ -1,8 +1,3 @@
-/* eslint-disable brace-style */
-/* eslint-disable max-len */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 interface Database<K, T> {
   get(id: K): T;
   set(id: K, value: T): void;

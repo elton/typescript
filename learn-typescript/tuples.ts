@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable comma-dangle */
 type TreeDCoordinate = [x: number, y: number, z: number];
 
 function add3DCoordinate(
@@ -12,6 +9,7 @@ function add3DCoordinate(
 
 console.log(add3DCoordinate([0, 0, 0], [10, 20, 30]));
 
+// Tuples With Different Types
 function simpleStringState(
   initial: string
 ): [() => string, (v: string) => void] {

@@ -18,9 +18,11 @@ module.exports = {
   rules: {
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2], // 2 spaces === 1 tab
-    'arrow-body-style': 'off',
-    'no-console': 'off',
-    'comma-dangle': 'off',
-    'no-unused-vars': 'warn',
+    '@typescript-eslint/arrow-body-style': 'off',
+    '@typescript-eslint/no-console': 'off',
+    '@typescript-eslint/comma-dangle': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
+    '@typescript-eslint/no-inferrable-types': 'warn',
   },
 };

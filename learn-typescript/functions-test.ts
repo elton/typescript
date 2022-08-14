@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import addNumbers, { addStrings, introduce } from './functions';
 
 console.log(addNumbers(1, 2));

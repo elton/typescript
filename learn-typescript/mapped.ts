@@ -1,5 +1,3 @@
-/* eslint-disable no-throw-literal */
-/* eslint-disable no-unused-vars */
 type MyFlexibleDogInfo = {
   name: string;
   [key: string]: string | number;

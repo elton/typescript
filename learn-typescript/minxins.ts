@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-classes-per-file */
 function myLogFunction() {
   return (str: string) => {
     console.log(str);

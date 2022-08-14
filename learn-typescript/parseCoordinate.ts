@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-redeclare */
 interface Coordinate {
   x: number;
   y: number;
