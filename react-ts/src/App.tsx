@@ -1,4 +1,4 @@
-import { Layout, Menu, message } from 'antd';
+import { Layout, Menu, message, Space } from 'antd';
 import { useCallback } from 'react';
 import { HiAdjustments, HiCube, HiHome } from 'react-icons/hi';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
@@ -89,24 +89,34 @@ function App() {
     },
   ];
   return (
-    <Layout className='min-h-[100vh]'>
+    <Layout style={{ minHeight: '100vh' }}>
       <Sider>
-        <Link to='/' className='flex items-end space-x-2 justify-center my-4'>
-          <img src={LogoImg} alt='logo' className='w-6 h-6' />
-          <span className='text-white'>TypeScript in React</span>
+        <Link
+          to='/'
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '1rem auto',
+          }}>
+          <Space align='end'>
+            <img src={LogoImg} alt='logo' style={{ width: '2rem' }} />
+            <span style={{ color: 'white' }}>TypeScript in React</span>
+          </Space>
         </Link>
         <Menu
           mode='inline'
           // selectedKeys={highlight()}
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
-          className='h-full'
+          theme='dark'
+          style={{ height: '100%' }}
           items={items}
         />
       </Sider>
       <Layout>
-        <Header className='bg-white'></Header>
-        <Content className='bg-white m-4 p-4'>
+        <Header style={{ backgroundColor: 'white' }} />
+        <Content
+          style={{ backgroundColor: 'white', margin: '1rem', padding: '1rem' }}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route

@@ -1,7 +1,7 @@
 const Home = () => {
   return (
-    <div className='mx-auto text-center'>
-      <img src='/home.svg' alt='home' className='w-3/4' />
+    <div style={{ margin: '0 auto', textAlign: 'center' }}>
+      <img src='/home.svg' alt='home' style={{ width: '60%' }} />
     </div>
   );
 };

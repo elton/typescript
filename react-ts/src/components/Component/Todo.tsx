@@ -1,4 +1,14 @@
-import { Button, Col, Form, Input, List, Row, Space, Typography } from 'antd';
+import {
+  Button,
+  Col,
+  Divider,
+  Form,
+  Input,
+  List,
+  Row,
+  Space,
+  Typography,
+} from 'antd';
 import { useCallback, useReducer } from 'react';
 const { Title, Paragraph } = Typography;
 
@@ -41,48 +51,44 @@ const Todo: React.FunctionComponent = () => {
   return (
     <>
       <Title>Hooks example: Todo</Title>
-      <Paragraph>
-        <Space direction='vertical' className='flex'>
-          <List
-            bordered
-            dataSource={todos}
-            renderItem={(item) => (
-              <List.Item>
-                <Row gutter={16}>
-                  <Col span={18}>{item.text}</Col>
-                  <Col span={6}>
-                    <Button
-                      type='primary'
-                      danger
-                      onClick={() => {
-                        dispatch({ type: 'DELETE', id: item.id });
-                      }}>
-                      Remove
-                    </Button>
-                  </Col>
-                </Row>
-              </List.Item>
-            )}
-          />
-          <Form
-            name='todo'
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 20 }}
-            onFinish={onAddTodo}>
-            <Form.Item
-              label='New Todo'
-              name='todo'
-              rules={[{ required: true, message: 'Please input a todo!' }]}>
-              <Input type='text' placeholder='Add todo' />
-            </Form.Item>
-            <Form.Item wrapperCol={{ offset: 4, span: 20 }}>
-              <Button type='primary' htmlType='submit'>
-                Add
-              </Button>
-            </Form.Item>
-          </Form>
-        </Space>
-      </Paragraph>
+
+      <List
+        itemLayout='horizontal'
+        bordered
+        dataSource={todos}
+        renderItem={(item) => (
+          <List.Item>
+            <div>{item.text}</div>
+
+            <Button
+              type='primary'
+              danger
+              onClick={() => {
+                dispatch({ type: 'DELETE', id: item.id });
+              }}>
+              Remove
+            </Button>
+          </List.Item>
+        )}
+      />
+      <Divider orientation='left'>添加任务</Divider>
+      <Form
+        name='todo'
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 20 }}
+        onFinish={onAddTodo}>
+        <Form.Item
+          label='新任务'
+          name='todo'
+          rules={[{ required: true, message: 'Please input a todo!' }]}>
+          <Input type='text' placeholder='Add todo' />
+        </Form.Item>
+        <Form.Item wrapperCol={{ offset: 4, span: 20 }}>
+          <Button type='primary' htmlType='submit'>
+            Add
+          </Button>
+        </Form.Item>
+      </Form>
     </>
   );
 };

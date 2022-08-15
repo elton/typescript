@@ -1,17 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import '~antd/dist/antd.css';
-
-img {
-  display: unset !important;
-}
-
-.ant-btn-primary:not([disabled]) {
-  background: #1890ff !important;
-}
-
-.ant-btn-dangerous:not([disabled]) {
-  background: #ff4d4f !important;
-}

@@ -1,4 +1,4 @@
-import { Button, Typography } from 'antd';
+import { Button, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 
 const { Title, Paragraph, Text } = Typography;
@@ -18,7 +18,7 @@ const StatesMgt: React.FunctionComponent = () => {
       <Paragraph>
         count: <Text code>{state.count}</Text>
       </Paragraph>
-      <div className='flex space-x-2 mt-2'>
+      <Space>
         <Button
           type='primary'
           shape='circle'
@@ -31,7 +31,7 @@ const StatesMgt: React.FunctionComponent = () => {
           onClick={() => setState((state) => ({ count: state.count - 1 }))}>
           -
         </Button>
-      </div>
+      </Space>
     </>
   );
 };
