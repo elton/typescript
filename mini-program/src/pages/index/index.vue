@@ -13,8 +13,16 @@
     />
   </view>
   <!-- 疫苗预约 -->
-  <view></view>
+  <view class="gongge">
+    <view v-for="(item, index) in vaccine" :key="index">
+      <image :src="item.image" mode="aspectFit" />
+      <text>{{ item.title }}</text>
+    </view>
+  </view>
   <!-- 挂号与体检 -->
+  <view class="re-me-ex">
+    <view class="re-me-ex-view"><text></text><text></text><image src="" mode="" />/view>
+  </view>
   <!-- 热门挂号 -->
   <!-- 健康自测 -->
 </template>
@@ -22,9 +30,16 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
   import { requestAPI } from '@/public/request';
+  import { Reserve, Vaccine } from '@/env';
 
   let menuTop = ref<string>('');
   let menuHeight = ref<string>('');
+
+  // 首页第一项数据：疫苗预约
+  let vaccine = ref<Vaccine[]>([]);
+  // 首页第二项数据：挂号与体检
+  let pyhdata = ref<Reserve[]>([]);
+
   // 取出胶囊按钮位置数据
   onMounted(() => {
     const menuButton = uni.getStorageSync('menuButton');
@@ -38,6 +53,8 @@
   const pageData = async () => {
     const res = await requestAPI.frontpage();
     console.log(res);
+    vaccine.value = res.data.data[0].vaccine;
+    phydata.value = res.data.data[1].reserve;
   };
 </script>
 
