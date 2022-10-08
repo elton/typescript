@@ -17,3 +17,19 @@ export interface Reserve {
   image: string;
   title: string;
 }
+
+export interface Popular {
+  background: string;
+  dep_id: string;
+  image: string;
+  title: string;
+}
+
+export interface SelfTest {
+  describe: string;
+  image: string;
+  minute: number;
+  name: string;
+  number_of_people: number;
+  question: number;
+}

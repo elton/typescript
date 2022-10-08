@@ -21,24 +21,93 @@
   </view>
   <!-- 挂号与体检 -->
   <view class="re-me-ex">
-    <view class="re-me-ex-view"><text></text><text></text><image src="" mode="" />/view>
+    <view class="re-me-ex-view" v-for="(item, index) in pyhdata" :key="index">
+      <text class="re-me-ex-title">{{ item.title }}</text>
+      <text class="re-me-ex-lable">{{ item.describe }}</text>
+      <image :src="item.image" mode="widthFix" />
+    </view>
   </view>
   <!-- 热门挂号 -->
+  <view class="online-title">
+    <view>热门挂号</view>
+    <view class="online-More">
+      <text>查看更多</text>
+      <image src="/static/other/gengduo.svg"></image>
+    </view>
+  </view>
+  <view class="online-reg">
+    <view
+      v-for="(item, index) in registered"
+      :key="index"
+      :style="'background-color:' + item.background"
+    >
+      <text>{{ item.title }}</text>
+      <image :src="item.image" mode="aspectFit" />
+    </view>
+  </view>
+
   <!-- 健康自测 -->
+  <view class="online-title">
+    <view>健康自测</view>
+  </view>
+  <view class="self-test" v-if="seltTest.length > 0">
+    <view
+      class="sele-test-top sele-test-flex sele-test-one sele-test-back"
+      v-for="(item, index) in [seltTest[0]]"
+      :key="index"
+    >
+      <view class="sele-test-view">
+        <text class="top-title">{{ item.name }}</text>
+        <text class="top-lable">{{ item.describe }}</text>
+        <view class="top-people">
+          <text class="top-num">{{ item.number_of_people }}</text>
+          <text class="top-min top-lable"
+            >人测过 / {{ item.question }}题 / {{ item.minute }}分钟</text
+          >
+        </view>
+      </view>
+      <image class="top-img" mode="widthFix" :src="item.image"></image>
+    </view>
+    <view
+      class="sele-test-top sele-test-flex sele-test-back"
+      v-for="(item, index) in seltTest.slice(1)"
+      :key="index"
+    >
+      <view class="sele-test-view">
+        <text class="top-title">{{ item.name }}</text>
+        <text class="top-lable top-min"
+          >{{ item.question }}题 / {{ item.minute }}分钟</text
+        >
+        <view class="top-people">
+          <text class="top-num">{{ item.number_of_people }}</text>
+          <text class="top-min top-lable">人测过</text>
+        </view>
+      </view>
+      <image
+        class="top-img bottom-img"
+        mode="widthFix"
+        :src="item.image"
+      ></image>
+    </view>
+  </view>
 </template>
 
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
   import { requestAPI } from '@/public/request';
-  import { Reserve, Vaccine } from '@/env';
+  import { Popular, Reserve, SelfTest, Vaccine } from '@/env';
 
   let menuTop = ref<string>('');
   let menuHeight = ref<string>('');
 
   // 首页第一项数据：疫苗预约
-  let vaccine = ref<Vaccine[]>([]);
+  const vaccine = ref<Vaccine[]>([]);
   // 首页第二项数据：挂号与体检
-  let pyhdata = ref<Reserve[]>([]);
+  const pyhdata = ref<Reserve[]>([]);
+  // 首页第三项数据：热门挂号
+  const registered = ref<Popular[]>([]);
+  // 首页第四项数据：健康自测
+  const seltTest = ref<SelfTest[]>([]);
 
   // 取出胶囊按钮位置数据
   onMounted(() => {
@@ -54,7 +123,9 @@
     const res = await requestAPI.frontpage();
     console.log(res);
     vaccine.value = res.data.data[0].vaccine;
-    phydata.value = res.data.data[1].reserve;
+    pyhdata.value = res.data.data[1].reserve;
+    registered.value = res.data.data[2].popular;
+    seltTest.value = res.data.data[3].self_test;
   };
 </script>
 
