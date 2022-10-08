@@ -8,11 +8,16 @@ const getToken = (): string => {
   return 'Basic ' + base64Token;
 };
 
+interface ResData {
+  data: { data: any[] };
+  statusCode: number;
+}
+
 const request = (
   url: string,
   method: 'GET' | 'POST',
   data: string | object | ArrayBuffer
-) => {
+): Promise<ResData> => {
   return new Promise((resolve, reject) => {
     uni.request({
       url: baseURL + url,

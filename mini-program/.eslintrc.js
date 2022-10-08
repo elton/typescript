@@ -1,20 +1,26 @@
+/* eslint-disable no-undef */
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
-  extends: ['plugin:vue/vue3-essential', 'standard'],
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-essential',
+    'plugin:@typescript-eslint/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: {},
+  rules: { 'vue/multi-word-component-names': 'off' },
   globals: {
     uni: true,
     UniApp: true,
     wx: true,
-    ICloud: true
-  }
-}
+    ICloud: true,
+  },
+  parser: 'vue-eslint-parser',
+};

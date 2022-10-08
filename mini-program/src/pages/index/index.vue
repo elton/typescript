@@ -1,5 +1,3 @@
-<!-- eslint-disable semi -->
-<!-- eslint-disable indent -->
 <template>
   <!-- 自定义的导航 -->
   <view class="navigation">
@@ -50,10 +48,10 @@
   <view class="online-title">
     <view>健康自测</view>
   </view>
-  <view class="self-test" v-if="seltTest.length > 0">
+  <view class="self-test" v-if="selfTest.length > 0">
     <view
       class="sele-test-top sele-test-flex sele-test-one sele-test-back"
-      v-for="(item, index) in [seltTest[0]]"
+      v-for="(item, index) in [selfTest[0]]"
       :key="index"
     >
       <view class="sele-test-view">
@@ -70,7 +68,7 @@
     </view>
     <view
       class="sele-test-top sele-test-flex sele-test-back"
-      v-for="(item, index) in seltTest.slice(1)"
+      v-for="(item, index) in selfTest.slice(1)"
       :key="index"
     >
       <view class="sele-test-view">
@@ -97,8 +95,8 @@
   import { requestAPI } from '@/public/request';
   import { Popular, Reserve, SelfTest, Vaccine } from '@/env';
 
-  let menuTop = ref<string>('');
-  let menuHeight = ref<string>('');
+  const menuTop = ref<string>('');
+  const menuHeight = ref<string>('');
 
   // 首页第一项数据：疫苗预约
   const vaccine = ref<Vaccine[]>([]);
@@ -107,11 +105,14 @@
   // 首页第三项数据：热门挂号
   const registered = ref<Popular[]>([]);
   // 首页第四项数据：健康自测
-  const seltTest = ref<SelfTest[]>([]);
+  const selfTest = ref<SelfTest[]>([]);
 
   // 取出胶囊按钮位置数据
   onMounted(() => {
-    const menuButton = uni.getStorageSync('menuButton');
+    const menuButton = uni.getStorageSync('menuButton') as {
+      top: string;
+      height: string;
+    };
     menuTop.value = menuButton.top + 'px';
     menuHeight.value = menuButton.height + 'px';
 
@@ -125,7 +126,7 @@
     vaccine.value = res.data.data[0].vaccine;
     pyhdata.value = res.data.data[1].reserve;
     registered.value = res.data.data[2].popular;
-    seltTest.value = res.data.data[3].self_test;
+    selfTest.value = res.data.data[3].self_test;
   };
 </script>
 
