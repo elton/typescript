@@ -1,6 +1,12 @@
 {
   "pages": [
     {
+      "path": "pages/xinguan-vaccine/xinguan-vaccine",
+      "style": {
+        "navigationBarTitleText": "新冠疫苗接种预约"
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
         "navigationStyle": "custom",

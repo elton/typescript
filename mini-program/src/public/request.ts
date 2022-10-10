@@ -69,11 +69,14 @@ const request = (
   });
 };
 
-const requestAPI = {
+export const requestAPI = {
   // 首页数据
   frontpage: () => {
     return request('/frontpage', 'GET', {});
   },
-};
 
-export { requestAPI };
+  // 新冠疫苗预约
+  newAppTime: () => {
+    return request('/newapptime', 'GET', {});
+  },
+};
