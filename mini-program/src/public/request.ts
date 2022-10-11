@@ -75,22 +75,20 @@ const request = (
 
 export const requestAPI = {
   // 首页数据
-  frontpage: () => {
-    return request('/frontpage', 'GET', {});
-  },
+  frontpage: () => request('/frontpage', 'GET', {}),
 
   // 新冠疫苗预约
-  newAppTime: () => {
-    return request('/newapptime', 'GET', {});
-  },
+  newAppTime: () => request('/newapptime', 'GET', {}),
 
   // 新冠疫苗预约提交
-  resCovid: (data: object) => {
-    return request('/rescovid', 'POST', data);
-  },
+  resCovid: (data: object) => request('/rescovid', 'POST', data),
 
   // 小程序登录
-  wxLogin: (data: object) => {
-    return request('/wx_login', 'POST', data);
-  },
+  wxLogin: (data: object) => request('/wx_login', 'POST', data),
+
+  // 新冠疫苗预约订单
+  covidOrder: () => request('/coviduser_order', 'GET', {}),
+
+  // 取消新冠疫苗预约订单
+  covidCancel: (data: object) => request('/covidcancel', 'GET', data),
 };

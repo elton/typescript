@@ -149,6 +149,7 @@
       week: [],
     },
   });
+
   onMounted(async () => {
     const res = await requestAPI.newAppTime();
     console.log(res);

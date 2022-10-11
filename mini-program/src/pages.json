@@ -7,24 +7,25 @@
       }
     },
     {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
       "path": "pages/my-service/xinguan/index",
       "style": {
         "navigationBarBackgroundColor": "#FFFFFF",
         "navigationBarTitleText": "新冠疫苗预约订单"
       }
     },
+
     {
       "path": "pages/login-page/index",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTitleText": "登录界面"
-      }
-    },
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationStyle": "custom",
-        "navigationBarTitleText": "首页"
       }
     },
     {

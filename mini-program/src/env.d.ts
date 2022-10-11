@@ -59,3 +59,14 @@ export interface NewAppTime {
   lasting: Period[];
   week: Week[];
 }
+
+export interface CovidTestOrder {
+  address: string;
+  cancel: boolean;
+  company: string;
+  date: string;
+  name: string;
+  period: string;
+  time: string;
+  _id: string;
+}
