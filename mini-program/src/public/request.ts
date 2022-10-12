@@ -91,4 +91,7 @@ export const requestAPI = {
 
   // 取消新冠疫苗预约订单
   covidCancel: (data: object) => request('/covidcancel', 'GET', data),
+
+  // HPV疫苗列表
+  otuHpv: () => request('/otuhpv', 'GET', {}),
 };

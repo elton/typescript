@@ -70,3 +70,16 @@ export interface CovidTestOrder {
   time: string;
   _id: string;
 }
+
+export interface HpvSelect {
+  name: string;
+  _id: string;
+}
+
+export interface HpvList {
+  describe: string[];
+  hpv_id: string;
+  name: string;
+  price: string[];
+  _id: string;
+}
