@@ -32,7 +32,11 @@
       </view>
       <view class="hpv-price">¥{{ item.price[0] }} - ¥{{ item.price[1] }}</view>
     </view>
-    <view class="hpv-reserve">去预约</view>
+    <view
+      class="hpv-reserve"
+      @click="toReseerve(item._id, item.name, item.price, item.describe)"
+      >去预约</view
+    >
   </view>
 
   <view style="height: 100rpx"></view>
@@ -56,9 +60,30 @@
   });
 
   const toggle = (id: string, index: number) => {
-    hpvList.value = hpvAll.value.filter((item) => item.hpv_id === id);
-    console.log(hpvList.value);
     checked.value = index;
+    if (id === '26da8e4962dc565503df9629704f1700') {
+      hpvList.value = hpvAll.value;
+    } else {
+      hpvList.value = hpvAll.value.filter((item) => item.hpv_id === id);
+    }
+    // console.log(hpvList.value);
+  };
+
+  const toReseerve = (
+    id: string,
+    name: string,
+    price: string[],
+    describe: string[]
+  ) => {
+    const obj = JSON.stringify({
+      id,
+      name,
+      price,
+      describe,
+    });
+    uni.navigateTo({
+      url: `/pages/hpv-vaccine/hpv-buy?value=${obj}`,
+    });
   };
 </script>
 <style scoped>

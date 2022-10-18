@@ -11,6 +11,7 @@
   import { requestAPI } from '@/public/request';
   const login = () => {
     uni.getUserProfile({
+      //获取用户信息。每次请求都会弹出授权窗口，用户同意后返回 userInfo
       desc: '获取个人信息',
       success: (res) => {
         console.log(res);

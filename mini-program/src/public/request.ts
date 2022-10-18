@@ -94,4 +94,20 @@ export const requestAPI = {
 
   // HPV疫苗列表
   otuHpv: () => request('/otuhpv', 'GET', {}),
+
+  // HPV疫苗套餐
+  hpvPack: () => request('/hpv_pack', 'GET', {}),
+
+  // 查询HPV疫苗套餐价格
+  hpvPrice: (data: { hpv_id: string; combo_id: string; time_id: string }) =>
+    request('/hpv_price', 'POST', data),
+
+  // 提交HPV疫苗套餐价格
+  resHpv: (data: object) => request('/reshpv', 'POST', data),
+
+  // HPV疫苗预约订单
+  hpvUserOrder: () => request('/hpvuser_order', 'GET', {}),
+
+  // 取消HPV疫苗预约订单
+  hpvCancel: (data: { _id: string }) => request('/hpvcancel', 'GET', data),
 };

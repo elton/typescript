@@ -83,3 +83,49 @@ export interface HpvList {
   price: string[];
   _id: string;
 }
+
+interface HpvName {
+  combo: string;
+  combo_id: string; // 跟JSON数据中的key的名字保持一致
+}
+
+interface HpvTime {
+  time: string;
+  time_id: string;
+}
+
+export interface HpvCombName {
+  title: string;
+  name: HpvName[];
+}
+
+export interface HpvCombTime {
+  title: string;
+  name: HpvTime[];
+}
+
+// ----------新冠疫苗订单------------
+export interface XinguanOrder {
+  address: string;
+  cancel: boolean;
+  company: string;
+  date: string;
+  name: string;
+  period: string;
+  time: string;
+  _id: string;
+}
+
+// ----------HPV疫苗预约订单------------
+export interface HpvOrder {
+  name: string;
+  combo: string;
+  ino_time: string;
+  price: number;
+  hpv_name: string;
+  time: string;
+  address: string;
+  order_number: string;
+  cancel: boolean;
+  _id: string;
+}
