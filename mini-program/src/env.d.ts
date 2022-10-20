@@ -129,3 +129,39 @@ export interface HpvOrder {
   cancel: boolean;
   _id: string;
 }
+
+interface Date {
+  date: string;
+  week: string;
+}
+
+interface Style {
+  desc: string[];
+  title: string;
+}
+// 核酸检测预约
+export interface Nucleicacid {
+  address: string;
+  boon: string[];
+  date: Date[];
+  hospital: string;
+  logo: string;
+  name: string;
+  phone: string;
+  price: number;
+  style: Style[];
+  _id: string;
+}
+
+// ----------核酸检测预约订单------------
+export interface NuataOrder {
+  address: string;
+  cancel: boolean;
+  name: string;
+  order_number: string;
+  phy_name: string;
+  phy_time: string;
+  price: number;
+  time: string;
+  _id: string;
+}

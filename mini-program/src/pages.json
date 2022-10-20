@@ -1,6 +1,26 @@
 {
   "pages": [
     {
+      "path": "pages/graphics/index",
+      "style": {
+        "navigationBarTitleText": "图文咨询"
+      }
+    },
+    {
+      "path": "pages/my-service/nucleic-acid/index",
+      "style": {
+        "navigationBarTitleText": "核酸检测订单",
+        "navigationBarBackgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/nucleic-acid/index",
+      "style": {
+        "navigationBarTitleText": "核酸检测预约"
+      }
+    },
+
+    {
       "path": "pages/my-service/hpv-view/index",
       "style": {
         "navigationBarBackgroundColor": "#FFFFFF",

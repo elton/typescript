@@ -110,4 +110,21 @@ export const requestAPI = {
 
   // 取消HPV疫苗预约订单
   hpvCancel: (data: { _id: string }) => request('/hpvcancel', 'GET', data),
+
+  // 获取核酸检测页面数据
+  nuataGet: () => request('/nuataget', 'GET', {}),
+
+  // 提交核酸检测预约
+  resNuata: (data: {
+    name: string;
+    phone: string;
+    id_card: string;
+    time: string;
+  }) => request('/resnuata', 'POST', data),
+
+  // 核酸检测订单
+  nuatauserOrder: () => request('/nuatauser_order', 'GET', {}),
+
+  // 取消核酸检测订单
+  nuataCancel: (data: { _id: string }) => request('/nuatacancel', 'GET', data),
 };
