@@ -1,3 +1,4 @@
+import { Graphics } from '@/env';
 import { Base64 } from 'js-base64';
 const baseURL = 'https://meituan.thexxdd.cn/api';
 
@@ -140,6 +141,9 @@ export const requestAPI = {
     relation: string;
     sex: string;
   }) => request('/patient_res', 'POST', data),
+
+  // 提交图文咨询
+  GrapHics: (data: Graphics) => request('/graphics', 'POST', data),
 };
 
 // 图片上传

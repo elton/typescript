@@ -1,12 +1,13 @@
 <template>
-  <view class="patient-infor" v-for="(item,index) in patients" :key="index">
+  <view class="patient-infor" v-for="(item,index) in patients" :key="index"
+    @click="storePatientInfo(item.name,item._id)">
     <view class="patient-flex">
       <text class="patient-name">{{item.name}}</text>
       <text class="patient-text">{{item.relation}}</text>
     </view>
     <view class="patient-flex patient-sex">
       <text>{{item.sex}}</text>
-      <text>{{item.age}} 岁</text>
+      <text>{{item.age}}岁</text>
       <text>{{item.phone}}</text>
     </view>
   </view>
@@ -23,6 +24,7 @@ import point from '@/com-components/point.vue'
 import { requestAPI } from "@/public/request";
 import { onShow } from "@dcloudio/uni-app"
 import { Patient } from "@/env"
+import { myStore } from "@/store/index"
 
 const show = ref(false)
 const patients = ref<Patient[]>([])
@@ -44,6 +46,11 @@ const addPatient = () => {
   uni.navigateTo({
     url: '/pages/my-service/my-patient/add-patient'
   })
+}
+
+const storePatientInfo = (name: string, id: string) => {
+  myStore().setPatientInfo({ name, _id: id })
+  uni.navigateBack()
 }
 
 </script>

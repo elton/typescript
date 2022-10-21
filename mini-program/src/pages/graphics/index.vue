@@ -27,38 +27,32 @@
   </view>
 
   <view class="graphics-back">
-    <text class="graphics-Title" @click="choosePatient">选择就诊人</text>
+    <text class="graphics-Title">选择就诊人</text>
     <view class="patient-view">
       <image src="/static/other/touxiang.svg" mode="widthFix" />
-      <text>张三</text>
-      <text>选择就诊人</text>
+      <text>{{name}}</text>
+      <text @click="choosePatient">{{name===''?'选择就诊人':'重新选择就诊人'}}</text>
     </view>
   </view>
 
   <view style="height:200rpx"></view>
   <view class="submit">
-    <text>取消</text>
-    <text>提交</text>
+    <text @click="cancel">取消</text>
+    <text @click="submit">提交</text>
   </view>
 </template>
 <script setup lang="ts">
 import { uploadImage } from "@/public/misc";
-import { ref, reactive } from 'vue';
-import { uploadURL } from "@/public/request";
+import { reactive, ref } from 'vue';
+import { uploadURL, requestAPI } from "@/public/request";
 import { Graphics } from '@/env';
+import { myStore } from "@/store/index"
 
 const upload = async () => {
   const res: any = await uploadImage(uploadURL, '上传中', '上传失败')
   console.log(JSON.parse(res.data).data)
   submitData.ins_report.push(JSON.parse(res.data).data)
 }
-
-const submitData = reactive<Graphics>({
-  illness: '',
-  guide: false,
-  ins_report: [],
-  patient_id: ''
-})
 
 const checkboxChange = (event: { detail: { value: string[] } }) => {
   submitData.guide = event.detail.value.length > 0
@@ -68,6 +62,39 @@ const choosePatient = () => {
   uni.navigateTo({
     url: '/pages/my-service/my-patient/my-patient'
   })
+}
+
+// 监听选择的就诊人信息变更
+const name = ref('')
+myStore().$subscribe((mutation, state) => {
+  name.value = state.patientInfo.name
+  submitData.patient_id = state.patientInfo._id
+})
+
+const submitData = reactive<Graphics>({
+  illness: '',
+  guide: false,
+  ins_report: [],
+  patient_id: ''
+})
+
+const cancel = () => {
+  uni.navigateBack()
+}
+
+const submit = async () => {
+  uni.showLoading({
+    title: '提交中', mask: true
+  })
+  const res = await requestAPI.GrapHics(submitData) as { statusCode: number }
+  if (res.statusCode === 200) {
+    uni.showToast({
+      title: '提交成功',
+      icon: 'success',
+      duration: 1000
+    })
+  }
+
 }
 
 </script>
