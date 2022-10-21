@@ -127,4 +127,23 @@ export const requestAPI = {
 
   // 取消核酸检测订单
   nuataCancel: (data: { _id: string }) => request('/nuatacancel', 'GET', data),
+
+  // 获取就诊人信息
+  getPatient: () => request('/get_patient', 'GET', {}),
+
+  // 提交就诊人信息
+  patientRes: (data: {
+    born: string;
+    id_card: string;
+    name: string;
+    phone: string;
+    relation: string;
+    sex: string;
+  }) => request('/patient_res', 'POST', data),
 };
+
+// 图片上传
+export const uploadURL = baseURL + '/upload_picture';
+
+// 身份证上传
+export const aiCardURL = baseURL + '/ai_card';

@@ -7,6 +7,20 @@
       }
     },
     {
+      "path": "pages/my-service/my-patient/my-patient",
+      "style": {
+        "navigationBarTitleText": "我的就诊人",
+        "navigationBarBackgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/my-service/my-patient/add-patient",
+      "style": {
+        "navigationBarTitleText": "创建就诊人",
+        "navigationBarBackgroundColor": "#FFFFFF"
+      }
+    },
+    {
       "path": "pages/my-service/nucleic-acid/index",
       "style": {
         "navigationBarTitleText": "核酸检测订单",

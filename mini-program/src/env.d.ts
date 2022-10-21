@@ -165,3 +165,23 @@ export interface NuataOrder {
   time: string;
   _id: string;
 }
+
+// 提交图文咨询
+export interface Graphics {
+  illness: string;
+  guide: boolean;
+  ins_report: string[];
+  patient_id: string;
+}
+
+// 就诊人数据
+export interface Patient {
+  age: string;
+  born: string;
+  id_card: string;
+  name: string;
+  phone: string;
+  relation: string;
+  sex: string;
+  _id: string;
+}
