@@ -185,3 +185,73 @@ export interface Patient {
   sex: string;
   _id: string;
 }
+
+export interface ResponseData {
+  data: { data: [] };
+  statusCode: number;
+}
+
+export interface PhyTerm {
+  query_val: string;
+  _id: string;
+  filter_val: string[];
+}
+
+export interface PhyData {
+  be_suit: string;
+  describe: string;
+  image: string;
+  price: number;
+  sales: number;
+  title: string;
+  _id: string;
+}
+
+export interface FilterData {
+  type: string;
+  sales: string;
+  price: string;
+}
+
+interface Crowd {
+  image: string;
+  name: string;
+}
+
+interface Content {
+  details: string;
+  thing: string;
+}
+
+interface Project {
+  title: string;
+  content: Content[];
+}
+
+export interface PhyDetail {
+  image: string;
+  price: number;
+  sales: number;
+  title: string;
+  _id: string;
+  crowd: Crowd[];
+  date: Date[];
+  project: Project[];
+}
+export interface PatientData {
+  phy_name: string;
+  phy_time: string;
+  show?: boolean;
+  patient_id?: string;
+}
+export interface phyOrder {
+  address: string;
+  cancel: boolean;
+  name: string;
+  order_number: string;
+  phy_name: string;
+  phy_time: string;
+  price: number;
+  time: string;
+  _id: string;
+}

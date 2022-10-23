@@ -1,5 +1,6 @@
-import { Graphics } from '@/env';
+import { FilterData, Graphics, PatientData, ResponseData } from '@/env';
 import { Base64 } from 'js-base64';
+
 const baseURL = 'https://meituan.thexxdd.cn/api';
 
 // 获取token
@@ -9,17 +10,12 @@ const getToken = (): string => {
   return 'Basic ' + base64Token;
 };
 
-interface ResData {
-  data: { data: any[] };
-  statusCode: number;
-}
-
 const request = (
   url: string,
   method: 'GET' | 'POST',
   data: string | object | ArrayBuffer
-): Promise<ResData> => {
-  return new Promise((resolve, reject) => {
+): Promise<ResponseData> => {
+  return new Promise<ResponseData>((resolve, reject) => {
     uni.request({
       url: baseURL + url,
       method,
@@ -29,6 +25,7 @@ const request = (
         if (res.statusCode === 200) {
           resolve(res);
         } else if (res.statusCode === 401) {
+          // 需要验证用户权限
           uni.navigateTo({
             url: '/pages/login-page/index',
           });
@@ -144,6 +141,27 @@ export const requestAPI = {
 
   // 提交图文咨询
   GrapHics: (data: Graphics) => request('/graphics', 'POST', data),
+
+  // 获取体检筛选条件
+  phyTerm: () => request('/phyterm', 'GET', {}),
+
+  // 获取全部体检套餐
+  physGet: () => request('/physget', 'GET', {}),
+
+  // 查询筛选体检套餐
+  phyQuery: (data: FilterData) => request('/phyquery', 'POST', data),
+
+  // 体检套餐详情页数据
+  phyDetail: (data: { id: string }) => request('/phydateil', 'GET', data),
+
+  // 体检预约提交
+  resPhy: (data: PatientData) => request('/resphy', 'POST', data),
+
+  // 获取体检套餐订单
+  phyOrder: () => request('/phyuser_order', 'GET', {}),
+
+  // 取消体检套餐订单
+  phyCancel: (data: { _id: string }) => request('/phycancel', 'GET', data),
 };
 
 // 图片上传

@@ -22,43 +22,40 @@
     </view>
 
     <view class="reg-cancel">
-      <text
-        :class="item.cancel ? '' : 'prevent_style'"
-        @click="cancel(item._id, index)"
-        >{{ item.cancel ? '取消预约' : '已取消预约' }}</text
-      >
+      <text :class="item.cancel ? '' : 'prevent_style'" @click="cancel(item._id, index)">{{ item.cancel ? '取消预约' :
+      '已取消预约' }}</text>
     </view>
   </view>
   <Point :show="show" />
   <view style="height: 100rpx"></view>
 </template>
 <script setup lang="ts">
-  import Point from '@/com-components/point.vue';
-  import { ref } from 'vue';
-  import { onShow } from '@dcloudio/uni-app';
-  import { requestAPI } from '@/public/request';
-  import { HpvOrder } from '@/env';
+import Point from '@/com-components/point.vue';
+import { ref } from 'vue';
+import { onShow } from '@dcloudio/uni-app';
+import { requestAPI } from '@/public/request';
+import { HpvOrder, ResponseData } from '@/env';
 
-  // 获取订单数据
-  const order = ref<HpvOrder[]>([]);
-  const show = ref(false);
+// 获取订单数据
+const order = ref<HpvOrder[]>([]);
+const show = ref(false);
 
-  onShow(async () => {
-    const res = await requestAPI.hpvUserOrder();
-    console.log(res);
-    order.value = res.data.data;
-    if (res.data.data.length == 0) {
-      show.value = true;
-    }
-  });
+onShow(async () => {
+  const res = await requestAPI.hpvUserOrder() as ResponseData;
+  console.log(res);
+  order.value = res.data.data;
+  if (res.data.data.length == 0) {
+    show.value = true;
+  }
+});
 
-  const cancel = async (id: string, index: number) => {
-    const res = await requestAPI.hpvCancel({ _id: id });
-    if (res.statusCode === 200) {
-      order.value[index].cancel = false;
-    }
-  };
+const cancel = async (id: string, index: number) => {
+  const res = await requestAPI.hpvCancel({ _id: id }) as ResponseData;
+  if (res.statusCode === 200) {
+    order.value[index].cancel = false;
+  }
+};
 </script>
 <style>
-  @import url('../../../common-style/vaccine.css');
+@import url('../../../common-style/vaccine.css');
 </style>

@@ -15,11 +15,8 @@
     </view>
 
     <view class="reg-cancel">
-      <text
-        :class="item.cancel ? '' : 'prevent_style'"
-        @click="cancel(item._id, index)"
-        >{{ item.cancel ? '取消预约' : '已取消预约' }}</text
-      >
+      <text :class="item.cancel ? '' : 'prevent_style'" @click="cancel(item._id, index)">{{ item.cancel ? '取消预约' :
+      '已取消预约' }}</text>
     </view>
 
     <!-- 提示组件 -->
@@ -28,32 +25,32 @@
   </view>
 </template>
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { onShow } from '@dcloudio/uni-app';
-  import { requestAPI } from '@/public/request';
-  import { CovidTestOrder } from '@/env';
-  import point from '@/com-components/point.vue'; // 引入提示组件
+import { ref } from 'vue';
+import { onShow } from '@dcloudio/uni-app';
+import { requestAPI } from '@/public/request';
+import { CovidTestOrder, ResponseData } from '@/env';
+import point from '@/com-components/point.vue'; // 引入提示组件
 
-  // 获取订单数据
-  const order = ref<CovidTestOrder[]>([]);
-  let show = ref(false);
+// 获取订单数据
+const order = ref<CovidTestOrder[]>([]);
+let show = ref(false);
 
-  onShow(async () => {
-    const res = await requestAPI.covidOrder();
-    order.value = res.data.data;
-    if (order.value.length === 0) {
-      show.value = true;
-    }
-  });
+onShow(async () => {
+  const res = await requestAPI.covidOrder() as ResponseData;
+  order.value = res.data.data;
+  if (order.value.length === 0) {
+    show.value = true;
+  }
+});
 
-  // 取消订单
-  const cancel = async (id: string, index: number) => {
-    const res = await requestAPI.covidCancel({ _id: id });
-    if (res.statusCode === 200) {
-      order.value[index].cancel = false;
-    }
-  };
+// 取消订单
+const cancel = async (id: string, index: number) => {
+  const res = await requestAPI.covidCancel({ _id: id }) as ResponseData;
+  if (res.statusCode === 200) {
+    order.value[index].cancel = false;
+  }
+};
 </script>
 <style scoped>
-  @import url('../../../common-style/vaccine.css');
+@import url('../../../common-style/vaccine.css');
 </style>

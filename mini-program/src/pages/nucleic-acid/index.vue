@@ -74,6 +74,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { requestAPI } from '@/public/request';
 import { Nucleicacid } from '@/env'
+import { ResponseData } from '../../env';
 
 const nuclei_cacid = reactive<{ data: Nucleicacid }>({
   data: {
@@ -91,7 +92,7 @@ const nuclei_cacid = reactive<{ data: Nucleicacid }>({
 })
 
 onMounted(async () => {
-  const res = await requestAPI.nuataGet()
+  const res: any = await requestAPI.nuataGet() as ResponseData
   console.log(res)
   nuclei_cacid.data = res.data.data[0]
 })

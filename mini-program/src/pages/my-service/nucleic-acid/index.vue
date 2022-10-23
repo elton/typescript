@@ -34,14 +34,14 @@ import Point from '@/com-components/point.vue';
 import { ref } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { requestAPI } from '@/public/request';
-import { NuataOrder } from '@/env';
+import { NuataOrder, ResponseData } from '@/env';
 
 // 获取订单数据
 const order = ref<NuataOrder[]>([]);
 const show = ref(false);
 
 onShow(async () => {
-  const res = await requestAPI.nuatauserOrder();
+  const res = await requestAPI.nuatauserOrder() as ResponseData;
   console.log(res);
   order.value = res.data.data;
   if (res.data.data.length == 0) {
@@ -50,7 +50,7 @@ onShow(async () => {
 });
 
 const cancel = async (id: string, index: number) => {
-  const res = await requestAPI.nuataCancel({ _id: id });
+  const res = await requestAPI.nuataCancel({ _id: id }) as ResponseData;
   if (res.statusCode === 200) {
     order.value[index].cancel = false;
   }

@@ -56,6 +56,7 @@
 import { reactive } from "vue";
 import { uploadImage } from "@/public/misc";
 import { aiCardURL, requestAPI } from "@/public/request";
+import { ResponseData } from "@/env";
 
 const upload = async () => {
   const res: any = await uploadImage(aiCardURL, '识别中', '识别失败')
@@ -103,7 +104,7 @@ const cancel = () => {
   uni.navigateBack()
 }
 const add = async () => {
-  const res = await requestAPI.patientRes(submitData)
+  const res = await requestAPI.patientRes(submitData) as ResponseData
   if (res.statusCode === 200) {
     uni.navigateBack()
   }
