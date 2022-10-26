@@ -2,6 +2,7 @@
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue';
+  import { ShareData } from './public/testing';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>;
   export default component;
@@ -254,4 +255,36 @@ export interface phyOrder {
   price: number;
   time: string;
   _id: string;
+}
+
+export interface Topic {
+  topic: string;
+  _id: string;
+  options: {
+    son_id: string;
+    title: string;
+  }[];
+}
+
+export interface TestResult {
+  outline: string[];
+  result: string;
+  scope: string;
+  suggest: string;
+  _id: string;
+  recommend:
+    | []
+    | {
+        dep_id: string;
+        dep_name: string;
+        hospital: string;
+      }[];
+}
+
+export interface ShareDataType {
+  type: string;
+  name: string;
+  share_title: string;
+  share_path: string;
+  share_url: string;
 }

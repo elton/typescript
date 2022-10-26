@@ -162,6 +162,25 @@ export const requestAPI = {
 
   // 取消体检套餐订单
   phyCancel: (data: { _id: string }) => request('/phycancel', 'GET', data),
+
+  // 获取抑郁症题目
+  depressionTopics: () => request('/depression_topics', 'GET', {}),
+
+  // 抑郁症测试结果
+  depression: (data: { value: string[] }) =>
+    request('/depression', 'GET', data),
+
+  // 获取早泄题目
+  prematureTopics: () => request('/premature_topics', 'GET', {}),
+
+  // 早泄测试结果
+  premature: (data: { value: string[] }) => request('/premature', 'GET', data),
+
+  // 获取失眠题目
+  insomniaTopics: () => request('/insomnia_topics', 'GET', {}),
+
+  // 失眠测试结果
+  insomnia: (data: { value: string[] }) => request('/insomnia', 'GET', data),
 };
 
 // 图片上传

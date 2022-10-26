@@ -1,6 +1,27 @@
 {
   "pages": [
     {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/self-test/topic",
+      "style": {
+        "navigationBarTitleText": "抑郁测评专业版",
+        "navigationBarBackgroundColor": "#d6e8ff"
+      }
+    },
+    {
+      "path": "pages/self-test/result",
+      "style": {
+        "navigationBarTitleText": "抑郁测评结果",
+        "navigationBarBackgroundColor": "#d6e8ff"
+      }
+    },
+    {
       "path": "pages/my-service/phy-exam/index",
       "style": {
         "navigationBarTitleText": "体检预约订单",
@@ -21,13 +42,7 @@
         "navigationBarTitleText": "体检详情"
       }
     },
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationStyle": "custom",
-        "navigationBarTitleText": "首页"
-      }
-    },
+
     {
       "path": "pages/graphics/index",
       "style": {
