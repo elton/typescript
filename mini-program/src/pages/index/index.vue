@@ -10,7 +10,7 @@
   </view>
   <!-- 疫苗预约 -->
   <view class="gongge">
-    <view v-for="(item, index) in vaccine" :key="index">
+    <view v-for="(item, index) in vaccine" :key="index" @click="navTo(index)">
       <image :src="item.image" mode="aspectFit" />
       <text>{{ item.title }}</text>
     </view>
@@ -87,6 +87,19 @@ const registered = ref<Popular[]>([]);
 // 首页第四项数据：健康自测
 const selfTest = ref<SelfTest[]>([]);
 
+const hero = [
+  { url: '/pages/xinguan-vaccine/xinguan-vaccine' },
+  { url: '/pages/hpv-vaccine/hpv-vaccine' },
+  { url: '/pages/nucleic-acid/index' },
+  { url: '/pages/graphics/index' },
+]
+
+const navTo = (index: number) => {
+  uni.navigateTo({
+    url: hero[index].url
+  })
+}
+
 // 取出胶囊按钮位置数据
 onMounted(() => {
   const menuButton = uni.getStorageSync('menuButton') as {
@@ -101,7 +114,16 @@ onMounted(() => {
 
 // 请求首页数据
 const pageData = async () => {
-  const res = await requestAPI.frontpage();
+  const res = await requestAPI.frontpage() as unknown as {
+    data: {
+      data: [
+        { vaccine: Vaccine[] },
+        { reserve: Reserve[] },
+        { popular: Popular[] },
+        { self_test: SelfTest[] }
+      ]
+    }
+  };
   console.log(res);
   vaccine.value = res.data.data[0].vaccine;
   pyhdata.value = res.data.data[1].reserve;
