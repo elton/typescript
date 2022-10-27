@@ -1,6 +1,18 @@
 {
   "pages": [
     {
+      "path": "pages/registered/registered",
+      "style": {
+        "navigationBarTitleText": "预约挂号"
+      }
+    },
+    {
+      "path": "pages/video/video",
+      "style": {
+        "navigationBarTitleText": "医师课堂"
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
         "navigationStyle": "custom",
@@ -119,18 +131,7 @@
         "navigationBarTitleText": "登录界面"
       }
     },
-    {
-      "path": "pages/registered/registered",
-      "style": {
-        "navigationBarTitleText": "挂号"
-      }
-    },
-    {
-      "path": "pages/video/video",
-      "style": {
-        "navigationBarTitleText": "短视频"
-      }
-    },
+
     {
       "path": "pages/mine/mine",
       "style": {

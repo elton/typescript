@@ -287,3 +287,27 @@ export interface ShareDataType {
   share_path: string;
   share_url: string;
 }
+
+export interface VideoData {
+  avatar: string;
+  controls: boolean;
+  name: string;
+  play_but: boolean;
+  video_title: string;
+  video_url: string;
+  _id: string;
+}
+
+export interface Department {
+  dep_ment: string;
+  _id: string;
+}
+
+export interface SubDept {
+  dep_ment: string;
+  dep_ment_list: {
+    dep_id: string;
+    dep_name: string;
+  }[];
+  _id: string;
+}

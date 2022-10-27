@@ -181,6 +181,15 @@ export const requestAPI = {
 
   // 失眠测试结果
   insomnia: (data: { value: string[] }) => request('/insomnia', 'GET', data),
+
+  // 获取视频数据
+  videoList: (data: { page: number }) => request('/video_list', 'GET', data),
+
+  // 获取父科室列表
+  department: () => request('/department', 'GET', {}),
+
+  // 获取子科室列表
+  regList: (data: { id: string }) => request('/reglist', 'GET', data),
 };
 
 // 图片上传
