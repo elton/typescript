@@ -190,6 +190,12 @@ export const requestAPI = {
 
   // 获取子科室列表
   regList: (data: { id: string }) => request('/reglist', 'GET', data),
+
+  // 获取选择医生的日期
+  timeSele: (data: { dep_id: string }) => request('/timesele', 'GET', data),
+
+  // 获取选择科室洗的全部医生
+  allDList: (data: { dep_id: string }) => request('/alldlist', 'GET', data),
 };
 
 // 图片上传

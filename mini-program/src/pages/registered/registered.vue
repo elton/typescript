@@ -9,7 +9,7 @@
     <view class="regist-right" v-if="subDepartments.length > 0">
       <block v-for="(item, index) in subDepartments" :key="index">
         <view v-for="(item_a, index_a) in item.dep_ment_list" :key="index_a">
-          <text>{{ item_a.dep_name }}</text>
+          <text @click="toDoctor(item_a.dep_id)">{{ item_a.dep_name }}</text>
         </view>
       </block>
     </view>
@@ -41,6 +41,13 @@ const querySubDept = async (id: string) => {
   const res = await requestAPI.regList({ id }) as { data: { data: SubDept[] } };
   console.log(res);
   subDepartments.value = res.data.data;
+};
+
+// 跳转到选择医生
+const toDoctor = (id: string) => {
+  uni.navigateTo({
+    url: `/pages/doctor/index?id=${id}`,
+  });
 };
 
 </script>

@@ -7,6 +7,13 @@
       }
     },
     {
+      "path": "pages/doctor/index",
+      "style": {
+        "navigationBarTitleText": "选择医生",
+        "navigationBarBackgroundColor": "#FFFFFF"
+      }
+    },
+    {
       "path": "pages/video/video",
       "style": {
         "navigationBarTitleText": "医师课堂"

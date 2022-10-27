@@ -2,6 +2,7 @@
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue';
+  import { Appointment } from './env';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>;
   export default component;
@@ -309,5 +310,20 @@ export interface SubDept {
     dep_id: string;
     dep_name: string;
   }[];
+  _id: string;
+}
+
+export interface Appointment {
+  date: string;
+  dep_id: string;
+  nu_source: number;
+  week: string;
+}
+
+export interface DoctorList {
+  avatar: string;
+  good_at: string;
+  name: string;
+  post: string;
   _id: string;
 }
